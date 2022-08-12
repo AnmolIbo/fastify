@@ -1,0 +1,52 @@
+
+
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "$id": "https://example.com/product.schema.json",
+    "title": "my first schemA",
+    "description": "going to practice all the schema in  this file",
+    "type":"object",
+    "properties": {
+        "product_id":{
+            "type":"integer",
+            "description":"the id of product"
+        },
+       "product_name":{
+        "type":"string",
+        "description":"the name of product"
+       },
+       "price":{
+        "type":"number",
+        "description":"the price",
+        "exclusiveMinumum":0
+      
+       },
+       "tags":{
+        "type":"array",
+        "description":"tags for the peoduct",
+        "items":{
+            "type":"string",
+            "description":"items hai bhai"
+        },
+        "minItems":1,
+        "uniqueItems":true
+       },
+
+       "dimensions":{
+        "type":"object",
+        "properties":{
+            "length":{
+                "type":"number"
+            },
+            "width":{
+                "type":"number"
+            },
+            "height":{
+                "type":"number"
+            },
+            "required":["length","width","height"]
+        }
+       },
+
+       "required":["product_name","product_id","price"]
+}
