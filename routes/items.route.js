@@ -1,6 +1,6 @@
 const items =require("../items")
 // options to get all the items;
-const {getItems,getItem} =require("../controllers/itemController")
+const {getItems,getItem,postItem} =require("../controllers/itemController")
 const getItemsOpts ={
     schema:{
         response:{
@@ -33,12 +33,34 @@ const getItemOpts ={
     handler:getItem
     
 }
-
+const postItemOpts ={
+    schema:{
+        body:{
+            type:"object",
+            required:["name"],
+            properties:{
+                name:{type:"string"}
+            }
+        },
+        response:{
+            200:{
+                type:"object",
+                properties:{
+                    id:{type:"string"},
+                    name:{type:"string"}
+                }
+            }
+        }
+    },
+    handler:postItem
+    
+}
 
 function itemRoutes(fastify,options,done){
     fastify.get("/items",getItemsOpts);
 
 fastify.get("/items/:id",getItemOpts);
+fastify.post("/items",postItemOpts)
 done();
 }
 module.exports = itemRoutes;

@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "dev":"nodemon server"
-
+    "dev": "nodemon server"
   },
   "repository": {
     "type": "git",
@@ -20,8 +19,11 @@
   },
   "homepage": "https://github.com/AnmolIbo/fastify#readme",
   "dependencies": {
-    "fastify": "^4.4.0",
-    "fastify-swagger": "^5.2.0"
+    "@fastify/static": "^5.0.0",
+    "@fastify/swagger": "^6.0.0",
+    "fastify": "^3.29.1",
+    "fastify-swagger": "^5.2.0",
+    "uuid": "^8.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"
