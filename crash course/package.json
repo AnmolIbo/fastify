@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node server",
-    "dev": "nodemon server"
+    "dev": "nodemon server",
+    "test":"jest"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,7 @@
     "@fastify/swagger": "^6.0.0",
     "fastify": "^3.29.1",
     "fastify-swagger": "^5.2.0",
+    "jest": "^28.1.3",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
