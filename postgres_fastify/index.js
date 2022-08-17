@@ -20,6 +20,11 @@ fastify.get("/todos",async (req,reply)=>{
     }catch(err){
         return ({"err":err})
     }
+});
+fastify.get("/todos/:id",async (req,reply)=>{
+    const id =req.params.id;
+    const todo = await client.query("SELECT * FROM todo WHERE todo_id=$1",[id]);
+    reply.send(todo.rows)
 })
 fastify.post("/todos",async(req,res)=>{
     try{
@@ -33,6 +38,25 @@ fastify.post("/todos",async(req,res)=>{
       
     }catch(err){
         console.log(err.message)
+    }
+})
+fastify.put("/todos/:id",async (req,reply)=>{
+    try{
+        const {id} =req.params;
+        const {description} =req.body;
+        const updatedTodo =client.query("UPDATE todo SET description = $1 WHERE todo_id=$2 ",[description,id]);
+        return updatedTodo.rows
+    }catch(err){
+        console.log(err.message);
+    }
+});
+fastify.delete("/todos/:id",async(req,reply)=>{
+    try{
+        const {id}= req.params;
+        const deleteTodo =client.query("DELETE FROM todo WHERE todo_id =$1",[id]);
+        reply.send(deleteTodo)
+    }catch(err){
+        console.error(err)
     }
 })
 fastify.listen(3000,()=>{
